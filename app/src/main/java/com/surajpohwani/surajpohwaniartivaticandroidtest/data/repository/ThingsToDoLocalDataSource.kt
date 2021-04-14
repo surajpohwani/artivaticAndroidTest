@@ -4,8 +4,8 @@ import com.surajpohwani.surajpohwaniartivaticandroidtest.data.model.ThingsToDoMo
 
 interface ThingsToDoLocalDataSource {
 
-    suspend fun getThingsToDoListFromDb(): List<ThingsToDoModel>
-    suspend fun saveThingsToDoListToDb(thingsToDoList: List<ThingsToDoModel>)
-    suspend fun clearAll()
+    suspend fun getThingsToDoListFromDb(id:String): ThingsToDoModel?
+    suspend fun saveThingsToDoListToDb(thingsToDoList: ThingsToDoModel)
+    suspend fun clearAll(id:String)
 
 }

@@ -14,7 +14,7 @@ data class ThingsToDoModel(
     val id: String,
 
     @Ignore
-    val rows: List<Row>,
+    var rows: List<Row>,
 
     val title: String
 )

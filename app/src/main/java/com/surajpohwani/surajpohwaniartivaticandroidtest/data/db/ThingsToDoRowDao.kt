@@ -12,8 +12,8 @@ interface ThingsToDoRowDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveRows(rows: List<Row>)
 
-    @Query("DELETE FROM things_row")
-    suspend fun deleteAllRows()
+    @Query("DELETE FROM things_row WHERE parentId=:countryId")
+    suspend fun deleteAllRows(countryId: String)
 
     @Query("SELECT * FROM things_row WHERE parentId=:countryId")
     suspend fun getRows(countryId: String): List<Row>

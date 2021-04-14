@@ -12,10 +12,10 @@ interface ThingsToDoCountryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveCountry(thingsToDoModel: ThingsToDoModel)
 
-    @Query("DELETE FROM things_to_do_country")
-    suspend fun deleteAllCountries()
+    @Query("DELETE FROM things_to_do_country WHERE id=:countryId")
+    suspend fun deleteAllCountries(countryId: String)
 
     @Query("SELECT * FROM things_to_do_country WHERE id=:countryId")
-    suspend fun getCountry(countryId: String): ThingsToDoModel
+    suspend fun getCountry(countryId: String): ThingsToDoModel?
 
 }

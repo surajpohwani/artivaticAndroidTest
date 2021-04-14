@@ -4,5 +4,5 @@ import com.surajpohwani.surajpohwaniartivaticandroidtest.data.model.ThingsToDoMo
 import retrofit2.Response
 
 interface ThingsToDoRemoteDataSource {
-    suspend fun getThingsToDoListRemote(): Response<ThingsToDoModel>
+    suspend fun getThingsToDoRemote(id:String): Response<ThingsToDoModel>?
 }

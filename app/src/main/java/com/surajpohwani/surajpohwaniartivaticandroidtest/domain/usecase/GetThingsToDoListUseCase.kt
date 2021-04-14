@@ -4,5 +4,5 @@ import com.surajpohwani.surajpohwaniartivaticandroidtest.data.model.ThingsToDoMo
 import com.surajpohwani.surajpohwaniartivaticandroidtest.domain.repository.GetThingsToDoRepository
 
 class GetThingsToDoListUseCase(private val getThingsToDoRepository: GetThingsToDoRepository) {
-    suspend fun execute(): List<ThingsToDoModel> = getThingsToDoRepository.getThingsToDoList()
+    suspend fun execute(id:String): ThingsToDoModel = getThingsToDoRepository.getThingsToDoList(id)
 }

@@ -4,7 +4,7 @@ import com.surajpohwani.surajpohwaniartivaticandroidtest.data.model.ThingsToDoMo
 
 interface GetThingsToDoRepository {
 
-    suspend fun getThingsToDoList(): List<ThingsToDoModel>
-    suspend fun updateThingsToDoList(): List<ThingsToDoModel>
+    suspend fun getThingsToDoList(id: String): ThingsToDoModel
+    suspend fun updateThingsToDoList(id: String): ThingsToDoModel
 
 }
