@@ -3,10 +3,7 @@ package com.surajpohwani.surajpohwaniartivaticandroidtest.data.repository
 import com.surajpohwani.surajpohwaniartivaticandroidtest.data.db.ThingsToDoCountryDao
 import com.surajpohwani.surajpohwaniartivaticandroidtest.data.db.ThingsToDoRowDao
 import com.surajpohwani.surajpohwaniartivaticandroidtest.data.model.ThingsToDoModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class ThingsToDoLocalDataSourceImpl(
     private val thingsToDoCountryDao: ThingsToDoCountryDao,
@@ -35,9 +32,9 @@ class ThingsToDoLocalDataSourceImpl(
     }
 
     override suspend fun clearAll(id: String) {
-        CoroutineScope(Dispatchers.IO).async {
+        withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
             thingsToDoCountryDao.deleteAllCountries(id)
             thingsToDoRowDao.deleteAllRows(id)
-        }.await()
+        }
     }
 }

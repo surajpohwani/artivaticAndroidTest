@@ -1,10 +1,15 @@
 package com.surajpohwani.surajpohwaniartivaticandroidtest.presentation
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.surajpohwani.surajpohwaniartivaticandroidtest.R
 import com.surajpohwani.surajpohwaniartivaticandroidtest.data.model.Row
 import com.surajpohwani.surajpohwaniartivaticandroidtest.databinding.RowItemBinding
@@ -44,10 +49,18 @@ class MyViewHolder(val binding: RowItemBinding) : RecyclerView.ViewHolder(bindin
 
         binding.tvTitle.text = row.title
         binding.tvDescription.text = row.description
-        binding.ivPicture.layout(0, 0, 0, 0)
-        Glide.with(binding.ivPicture.context)
-            .load(row.imageHref)
-            .into(binding.ivPicture)
+        if (row.imageHref != null) {
+            binding.ivPicture.visibility = View.VISIBLE
+            Glide.with(binding.ivPicture.context)
+                .load(row.imageHref)
+                .fitCenter()
+                .into(binding.ivPicture)
+
+
+
+        } else
+            binding.ivPicture.visibility = View.GONE
+
 
     }
 

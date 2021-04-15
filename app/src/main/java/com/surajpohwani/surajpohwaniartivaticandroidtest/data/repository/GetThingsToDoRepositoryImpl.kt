@@ -1,5 +1,6 @@
 package com.surajpohwani.surajpohwaniartivaticandroidtest.data.repository
 
+import com.surajpohwani.surajpohwaniartivaticandroidtest.data.model.Row
 import com.surajpohwani.surajpohwaniartivaticandroidtest.data.model.ThingsToDoModel
 import com.surajpohwani.surajpohwaniartivaticandroidtest.domain.repository.GetThingsToDoRepository
 import java.lang.Exception
@@ -41,10 +42,14 @@ class GetThingsToDoRepositoryImpl(
                 return data
             else {
                 thingsToDoModel = getThingsToDoFromAPi(id)
+                thingsToDoModel.id = id
+                for (row:Row in thingsToDoModel.rows)
+                    row.parentId = id
                 thingsToDoLocalDataSource.saveThingsToDoListToDb(thingsToDoModel)
             }
 
         } catch (e: Exception) {
+            e.printStackTrace()
 
         }
         return thingsToDoModel

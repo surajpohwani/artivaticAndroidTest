@@ -8,13 +8,13 @@ import com.google.gson.annotations.Expose
 data class Row(
 
     @Expose(serialize = false)
-    val parentId: String,
+    var parentId: String,
 
     @Expose(serialize = false)
     @PrimaryKey(autoGenerate = true)
     val id:Int,
 
-    val description: String,
-    val imageHref: String,
-    val title: String
+    val description: String?,
+    val imageHref: String?,
+    val title: String?
 )

@@ -2,7 +2,9 @@ package com.surajpohwani.surajpohwaniartivaticandroidtest.presentation.di.core
 
 import com.surajpohwani.surajpohwaniartivaticandroidtest.presentation.di.MainActivitySubComponent
 import dagger.Component
+import javax.inject.Singleton
 
+@Singleton
 @Component(
     modules = [
         AppModule::class,
