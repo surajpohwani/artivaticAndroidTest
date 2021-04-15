@@ -12,9 +12,7 @@ data class ThingsToDoModel(
     @PrimaryKey
     @Expose(serialize = false)
     val id: String,
-
-    @Ignore
-    var rows: List<Row>,
-
     val title: String
-)
+){
+    @Ignore lateinit var rows: List<Row>
+}
